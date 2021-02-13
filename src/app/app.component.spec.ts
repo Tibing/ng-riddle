@@ -8,6 +8,7 @@ import { MatButtonHarness } from '@angular/material/button/testing';
 import { DebugElement } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 
 describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
@@ -15,7 +16,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatToolbarModule, MatButtonModule],
+      imports: [MatToolbarModule, MatButtonModule, AppRoutingModule],
       declarations: [AppComponent],
     }).compileComponents();
 
@@ -25,7 +26,7 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
 
     expect(app).toBeTruthy();
@@ -53,6 +54,13 @@ describe('AppComponent', () => {
     const children: DebugElement[] = fixture.debugElement.children;
 
     expect(children[1].name).toBe('main');
+  });
+
+  it('should contain router-outlet inside main', async () => {
+    const children: DebugElement[] = fixture.debugElement.children;
+    const routerOutlet: DebugElement = children[1].children[0];
+
+    expect(routerOutlet.name).toBe('router-outlet');
   });
 
   it('should contain toolbar with one row', async () => {
