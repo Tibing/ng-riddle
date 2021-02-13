@@ -100,20 +100,26 @@ describe('AppComponent', () => {
   });
 
   it('Ng Riddle menu button should should contain proper routerLink', async () => {
-    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Ng Riddle'}));
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Ng Riddle' }));
 
     expect(await (await button.host()).getAttribute('routerLink')).toBe('ng-riddle');
   });
 
+  it('Ng Riddle menu button should contain proper routerLinkActive', async () => {
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Ng Riddle' }));
+
+    expect(await (await button.host()).getAttribute('routerLinkActive')).toBe('active');
+  });
+
   it('should contain Posts menu button', async () => {
-    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Posts'}));
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Posts' }));
 
     expect(button).toBeTruthy();
     expect(await button.getText()).toBe('Posts');
   });
 
   it('Posts menu button should trigger "/posts" navigation', async () => {
-    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Posts'}));
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Posts' }));
 
     await button.click();
 
@@ -124,6 +130,12 @@ describe('AppComponent', () => {
     const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Posts'}));
 
     expect(await (await button.host()).getAttribute('routerLink')).toBe('posts');
+  });
+
+  it('Posts menu button should should contain proper routerLinkActive', async () => {
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Posts'}));
+
+    expect(await (await button.host()).getAttribute('routerLinkActive')).toBe('active');
   });
 
   it('should contain Contact Us menu button', async () => {
@@ -147,6 +159,12 @@ describe('AppComponent', () => {
     expect(await (await button.host()).getAttribute('routerLink')).toBe('contact-us');
   });
 
+  it('Contact Us menu button should should contain proper routerLinkActive', async () => {
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Contact Us'}));
+
+    expect(await (await button.host()).getAttribute('routerLinkActive')).toBe('active');
+  });
+
   it('should contain About menu button', async () => {
     const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'About'}));
 
@@ -168,6 +186,12 @@ describe('AppComponent', () => {
     expect(await (await button.host()).getAttribute('routerLink')).toBe('about');
   });
 
+  it('About menu button should should contain proper routerLinkActive', async () => {
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'About'}));
+
+    expect(await (await button.host()).getAttribute('routerLinkActive')).toBe('active');
+  });
+
   it('should contain Dashboard menu button', async () => {
     const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Dashboard'}));
 
@@ -187,6 +211,12 @@ describe('AppComponent', () => {
     const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Dashboard'}));
 
     expect(await (await button.host()).getAttribute('routerLink')).toBe('dashboard');
+  });
+
+  it('Dashboard menu button should should contain proper routerLinkActive', async () => {
+    const button: MatButtonHarness = await loader.getHarness(MatButtonHarness.with({ text: 'Dashboard'}));
+
+    expect(await (await button.host()).getAttribute('routerLinkActive')).toBe('active');
   });
 
   it('should contain menu buttons in proper order', async () => {
