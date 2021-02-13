@@ -10,6 +10,7 @@ import { PostsComponent } from './posts/posts.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutComponent } from './about/about.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
+    AppRoutingModule,
+
     MatToolbarModule,
     MatButtonModule,
   ],
