@@ -31,10 +31,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should has only one children', async () => {
+  it('should has two children', async () => {
     const children: DebugElement[] = fixture.debugElement.children;
 
-    expect(children.length).toBe(1);
+    expect(children.length).toBe(2);
   });
 
   it('should contain one toolbar', async () => {
@@ -43,10 +43,16 @@ describe('AppComponent', () => {
     expect(toolbars.length).toBe(1);
   });
 
-  it('should contain toolbar as direct child', async () => {
+  it('should contain toolbar as first direct child', async () => {
     const children: DebugElement[] = fixture.debugElement.children;
 
     expect(children[0].name).toBe('mat-toolbar');
+  });
+
+  it('should contain main as second direct child', async () => {
+    const children: DebugElement[] = fixture.debugElement.children;
+
+    expect(children[1].name).toBe('main');
   });
 
   it('should contain toolbar with one row', async () => {

@@ -5,10 +5,20 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 
 import { AppComponent } from './app.component';
+import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
+import { PostsComponent } from './posts/posts.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { AboutComponent } from './about/about.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NgRiddleComponent,
+    PostsComponent,
+    ContactUsComponent,
+    AboutComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
