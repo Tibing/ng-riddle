@@ -5,6 +5,7 @@ import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
 import { HarnessLoader } from '@angular/cdk/testing';
 import { MatToolbarHarness } from '@angular/material/toolbar/testing';
 import { MatButtonHarness } from '@angular/material/button/testing';
+import { DebugElement } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
@@ -30,10 +31,22 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it('should has only one children', async () => {
+    const children: DebugElement[] = fixture.debugElement.children;
+
+    expect(children.length).toBe(1);
+  });
+
   it('should contain one toolbar', async () => {
     const toolbars: MatToolbarHarness[] = await loader.getAllHarnesses(MatToolbarHarness);
 
     expect(toolbars.length).toBe(1);
+  });
+
+  it('should contain toolbar as direct child', async () => {
+    const children: DebugElement[] = fixture.debugElement.children;
+
+    expect(children[0].name).toBe('mat-toolbar');
   });
 
   it('should contain toolbar with one row', async () => {
