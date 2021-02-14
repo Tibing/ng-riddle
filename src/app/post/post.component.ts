@@ -1,6 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { PostContent } from '../post.service';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',

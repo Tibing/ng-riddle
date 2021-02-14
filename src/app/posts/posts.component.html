@@ -1,7 +1,7 @@
 <h1>Posts</h1>
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let post of posts">
+  <mat-list-item *ngFor="let post of posts | async">
     <a matLine [routerLink]="'/post/' + post.id">{{ post.title }}</a>
   </mat-list-item>
 </mat-nav-list>

@@ -1,25 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-
-import { PostComponent } from './post.component';
+import { ActivatedRoute } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { posts } from '../posts/posts.component';
+
+import { PostComponent } from './post.component';
+import { loremIpsum, posts } from '../posts.mock';
+import { Post, PostContent } from '../post.service';
 
 class ActivatedRouteMock {
 
-  constructor(private paramValue?: string) {
+  constructor(private postId?: string) {
   }
 
   get snapshot(): any {
     // tslint:disable-next-line:no-non-null-assertion
-    const paramValue: string = this.paramValue!;
+    const postId: string = this.postId!;
+
     return {
-      get paramMap(): Partial<ParamMap> {
-        return {
-          get: (param: string) => paramValue,
-        };
-      }
+      data: {
+        get postContent(): PostContent {
+          const post: Post | undefined = posts.find((p: Post) => p.id === postId);
+
+          if (!post) {
+            return { title: `Can't load post 😱`, content: '' };
+          }
+
+          return { title: post.title, content: loremIpsum };
+        }
+      },
     };
   }
 }
@@ -44,16 +52,18 @@ describe('PostComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  for (let i = 0; i < posts.length; i++) {
+  for (let i = 1; i < posts.length + 1; i++) {
     it('should render selected post id', async () => {
-      TestBed.overrideProvider(ActivatedRoute, { useValue: new ActivatedRouteMock(i.toString()) });
+      TestBed.overrideProvider(ActivatedRoute, { useValue: new ActivatedRouteMock(`${i}-post`) });
       fixture = TestBed.createComponent(PostComponent);
       component = fixture.componentInstance;
       fixture.detectChanges();
 
-      const selectedPostId: DebugElement = fixture.debugElement.query(By.css('p'));
+      const heading: DebugElement = fixture.debugElement.query(By.css('h1'));
+      const content: DebugElement = fixture.debugElement.query(By.css('p'));
 
-      expect(selectedPostId.nativeElement.textContent).toBe(`Selected Post ID: ${i}`);
+      expect(heading.nativeElement.textContent).toBe(`${i}. Post Title`);
+      expect(content.nativeElement.textContent).toBe(loremIpsum);
     });
   }
 });

@@ -5,8 +5,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { posts, PostsComponent } from './posts.component';
+import { PostsComponent } from './posts.component';
 import { routes } from '../app-routing.module';
+import { posts } from '../posts.mock';
+import { Post } from '../post.service';
 
 describe('PostsComponent', () => {
   let component: PostsComponent;
@@ -33,8 +35,11 @@ describe('PostsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should contain posts list', () => {
-    expect(component.posts).toEqual(posts);
+  it('should contain posts list', done => {
+    component.posts.subscribe((loadedPosts: Post[]) => {
+      expect(loadedPosts).toEqual(posts);
+      done();
+    });
   });
 
   it('should has Posts title', () => {
