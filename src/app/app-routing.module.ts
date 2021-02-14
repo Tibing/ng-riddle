@@ -21,7 +21,11 @@ export const routes: Routes = [
   },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module')
+      .then(({ DashboardModule }) => DashboardModule),
+  },
   { path: '**', redirectTo: 'ng-riddle', pathMatch: 'full' },
 ];
 
