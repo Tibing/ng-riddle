@@ -7,12 +7,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
 import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostResolver } from './post.resolver';
 
 
 export const routes: Routes = [
   { path: 'ng-riddle', component: NgRiddleComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'post/:postId', component: PostComponent },
+  {
+    path: 'post/:postId',
+    component: PostComponent,
+    resolve: {
+      postContent: PostResolver
+    }
+  },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },

@@ -11,7 +11,7 @@ import { PostContent } from '../post.service';
 })
 export class PostComponent implements OnInit {
 
-  selectedPostID = this.activatedRoute.snapshot.paramMap.get('postId');
+  post: PostContent = this.activatedRoute.snapshot.data.postContent;
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
