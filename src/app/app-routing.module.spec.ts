@@ -56,6 +56,18 @@ describe('AppComponent', () => {
     expect(location.path()).toBe('/posts');
   });
 
+  it('navigate to "/post/any-id" should take you to /post/any-id', async () => {
+    await router.navigateByUrl('post/any-id');
+
+    expect(location.path()).toBe('/post/any-id');
+  });
+
+  it('navigate to "/post/some-another-id" should take you to /post/some-another-id', async () => {
+    await router.navigateByUrl('post/some-another-id');
+
+    expect(location.path()).toBe('/post/some-another-id');
+  });
+
   it('navigate to "/contact-us" should take you to /contact-us', async () => {
     await router.navigateByUrl('contact-us');
 
