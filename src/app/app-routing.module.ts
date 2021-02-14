@@ -12,7 +12,6 @@ import { PostComponent } from './post/post.component';
 export const routes: Routes = [
   { path: 'ng-riddle', component: NgRiddleComponent },
   { path: 'posts', component: PostsComponent },
-  { path: 'post/:postId', component: PostComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
