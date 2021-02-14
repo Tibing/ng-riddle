@@ -6,11 +6,13 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostComponent } from './post/post.component';
 
 
 export const routes: Routes = [
   { path: 'ng-riddle', component: NgRiddleComponent },
   { path: 'posts', component: PostsComponent },
+  { path: 'post/:postId', component: PostComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
