@@ -10,7 +10,6 @@ import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
 import { PostsComponent } from './posts/posts.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutComponent } from './about/about.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PostComponent } from './post/post.component';
 
@@ -21,7 +20,6 @@ import { PostComponent } from './post/post.component';
     PostsComponent,
     ContactUsComponent,
     AboutComponent,
-    DashboardComponent,
     PostComponent
   ],
   imports: [

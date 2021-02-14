@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -10,7 +10,6 @@ import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
 import { PostsComponent } from './posts/posts.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutComponent } from './about/about.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 describe('AppComponent', () => {
   let router: Router;
@@ -28,7 +27,6 @@ describe('AppComponent', () => {
         PostsComponent,
         ContactUsComponent,
         AboutComponent,
-        DashboardComponent,
       ],
     }).compileComponents();
 
@@ -84,6 +82,13 @@ describe('AppComponent', () => {
     await router.navigateByUrl('dashboard');
 
     expect(location.path()).toBe('/dashboard');
+  });
+
+  it('navigate to dashboard route ought to be the only lazy', async () => {
+    const route: Route | undefined = routes.find((r: Route) => !!r.loadChildren);
+
+    expect(route).toBeTruthy();
+    expect(route?.path).toBe('dashboard');
   });
 
   it('navigate to "/" should take you to /ng-riddle', async () => {
