@@ -36,6 +36,14 @@ npm start
 5. If all tests pass you can go to my solution, as **{task branch name}_done**.
 6. Go to the next task.
 
+## Table of contents
+- [1. Setup routing](#1-setup-routing)
+- [2. Configure menu links](#2-configure-menu-links)
+- [3. Highlight active menu item](#3-highlight-active-menu-item)
+- [4. Create posts list](#4-create-posts-list)
+- [5. Fetch post's content](#5-fetch-posts-content)
+- [6. Lazy-load dashboard](#6-lazy-load-dashboard)
+
 ### 1. Setup routing
 
 #### What you have to do
@@ -59,7 +67,7 @@ Here're pages:
   ![](readme-assets/task-1/about.png)
 - *dashboard* -> **DashboardComponent**
   ![](readme-assets/task-1/dashboard.png)
-  
+
 At this stage menu links shouldn't work.
 We'll configure that at the next stage.
 At this stage we're just configuring rendering of specific components for specific urls.
