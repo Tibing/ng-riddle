@@ -38,12 +38,6 @@ describe('AppComponent', () => {
     router.initialNavigation();
   });
 
-  it('navigate to "" should take you to /ng-riddle', async () => {
-    await router.navigateByUrl('');
-
-    expect(location.path()).toBe('/ng-riddle');
-  });
-
   it('navigate to "/ng-riddle" should take you to /ng-riddle', async () => {
     await router.navigateByUrl('/ng-riddle');
 
@@ -84,17 +78,5 @@ describe('AppComponent', () => {
     await router.navigateByUrl('dashboard');
 
     expect(location.path()).toBe('/dashboard');
-  });
-
-  it('navigate to "/" should take you to /ng-riddle', async () => {
-    await router.navigateByUrl('/');
-
-    expect(location.path()).toBe('/ng-riddle');
-  });
-
-  it('navigate to "/any-random-url" should take you to /ng-riddle', async () => {
-    await router.navigateByUrl('/any-random-url');
-
-    expect(location.path()).toBe('/ng-riddle');
   });
 });
