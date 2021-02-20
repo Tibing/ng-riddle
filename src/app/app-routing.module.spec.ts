@@ -84,4 +84,23 @@ describe('AppComponent', () => {
     expect(route).toBeTruthy();
     expect(route?.path).toBe('dashboard');
   });
+
+  it('navigate to "/" should take you to /ng-riddle', async () => {
+    await router.navigateByUrl('/');
+
+    expect(location.path()).toBe('/ng-riddle');
+  });
+
+  it('navigate to "" should take you to /ng-riddle', async () => {
+    await router.navigateByUrl('');
+
+    expect(location.path()).toBe('/ng-riddle');
+  });
+
+  it('/ng-riddle redirect ought to have proper pathMatch', async () => {
+    const route: Route | undefined = routes.find((r: Route) => !!r.redirectTo);
+
+    expect(route).toBeTruthy();
+    expect(route?.pathMatch).toBe('full');
+  });
 });
