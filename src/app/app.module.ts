@@ -12,6 +12,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PostComponent } from './post/post.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PostComponent } from './post/post.component';
     PostsComponent,
     ContactUsComponent,
     AboutComponent,
-    PostComponent
+    PostComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

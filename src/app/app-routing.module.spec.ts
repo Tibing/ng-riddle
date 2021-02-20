@@ -10,6 +10,7 @@ import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
 import { PostsComponent } from './posts/posts.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 describe('AppComponent', () => {
   let router: Router;
@@ -102,5 +103,24 @@ describe('AppComponent', () => {
 
     expect(route).toBeTruthy();
     expect(route?.pathMatch).toBe('full');
+  });
+
+  it('/any-random-path ought to take you to 404 page', async () => {
+    await router.navigateByUrl('/any-random-path');
+
+    expect(location.path()).toBe('/any-random-path');
+  });
+
+  it('/oasegoj ought to take you to 404 page', async () => {
+    await router.navigateByUrl('/oasegoj');
+
+    expect(location.path()).toBe('/oasegoj');
+  });
+
+  it('ought to have wild card route', () => {
+    const route: Route | undefined = routes.find((r: Route) => r.path === '**');
+
+    expect(route).toBeTruthy();
+    expect(route?.component).toBe(NotFoundComponent);
   });
 });
