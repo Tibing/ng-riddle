@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 import { PostComponent } from './post.component';
 import { loremIpsum, posts } from '../posts.mock';
@@ -12,23 +13,21 @@ class ActivatedRouteMock {
   constructor(private postId?: string) {
   }
 
-  get snapshot(): any {
+  get data(): Observable<any> {
     // tslint:disable-next-line:no-non-null-assertion
     const postId: string = this.postId!;
 
-    return {
-      data: {
-        get postContent(): PostContent {
-          const post: Post | undefined = posts.find((p: Post) => p.id === postId);
+    return of({
+      get postContent(): PostContent {
+        const post: Post | undefined = posts.find((p: Post) => p.id === postId);
 
-          if (!post) {
-            return { title: `Can't load post 😱`, content: '' };
-          }
-
-          return { title: post.title, content: loremIpsum };
+        if (!post) {
+          return { title: `Can't load post 😱`, content: '' };
         }
-      },
-    };
+
+        return { title: post.title, content: loremIpsum };
+      }
+    });
   }
 }
 
@@ -66,4 +65,21 @@ describe('PostComponent', () => {
       expect(content.nativeElement.textContent).toBe(loremIpsum);
     });
   }
+
+  it('should contain post$ stream', () => {
+    expect(component.post$).toBeTruthy();
+  });
+
+  it('post$ stream should return data from activated route', done => {
+    TestBed.overrideProvider(ActivatedRoute, { useValue: new ActivatedRouteMock() });
+    fixture = TestBed.createComponent(PostComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    component.post$.subscribe(({title, content}) => {
+      expect(title).toBe(`Can't load post 😱`);
+      expect(content).toBe('');
+      done();
+    });
+  });
 });
