@@ -9,8 +9,11 @@ export interface Post {
 }
 
 export interface PostContent {
+  id: string;
   title: string;
   content: string;
+  prev?: PostContent;
+  next?: PostContent;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -21,12 +24,22 @@ export class PostService {
   }
 
   getPostContent(postId: string): Observable<PostContent> {
-    const post: Post | undefined = posts.find((p: Post) => p.id === postId);
+    const postIndex: number = posts.findIndex((p: Post) => p.id === postId);
 
-    if (!post) {
-      return of({ title: `Can't load post 😱`, content: '' });
+    if (postIndex < 0) {
+      return of({ id: '', title: `Can't load post 😱`, content: '' });
     }
 
-    return of({ title: post.title, content: loremIpsum });
+    const post: Post = posts[postIndex];
+    const prev: Post | undefined = posts[postIndex - 1];
+    const next: Post | undefined = posts[postIndex + 1];
+
+    return of({
+       id: post.id,
+       title: post.title,
+       content: loremIpsum,
+       prev: prev && { id: prev.id, title: prev.title, content: loremIpsum },
+       next: next && { id: next.id, title: next.title, content: loremIpsum },
+    });
   }
 }

@@ -1,4 +1,9 @@
 <ng-container *ngIf="post$ | async as post">
   <h1>{{ post.title }}</h1>
   <p>{{ post.content }}</p>
+
+  <div class="nav">
+    <a mat-flat-button *ngIf="post.prev">Prev</a>
+    <a mat-flat-button *ngIf="post.next">Next</a>
+  </div>
 </ng-container>
