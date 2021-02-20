@@ -26,7 +26,6 @@ export const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module')
       .then(({ DashboardModule }) => DashboardModule),
   },
-  { path: '**', redirectTo: 'ng-riddle', pathMatch: 'full' },
 ];
 
 @NgModule({
