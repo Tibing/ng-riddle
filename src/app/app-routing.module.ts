@@ -23,7 +23,6 @@ export const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '**', redirectTo: 'ng-riddle', pathMatch: 'full' },
 ];
 
 @NgModule({
