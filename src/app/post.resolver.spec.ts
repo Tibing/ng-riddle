@@ -28,7 +28,7 @@ describe('PostResolver', () => {
 
   it('should query for post service', async () => {
     spyOn(service, 'getPostContent').and.returnValue(of({ title: `Can't load post 😱`, content: '' }));
-    await router.navigateByUrl('post/my-favorite-post');
+    await router.navigateByUrl('posts/my-favorite-post');
     expect(service.getPostContent).toHaveBeenCalled();
   });
 });

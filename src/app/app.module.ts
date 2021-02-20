@@ -13,6 +13,7 @@ import { AboutComponent } from './about/about.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PostComponent } from './post/post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PostsListComponent } from './posts-list/posts-list.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ContactUsComponent,
     AboutComponent,
     PostComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PostsListComponent
   ],
   imports: [
     BrowserModule,

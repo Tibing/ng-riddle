@@ -11,6 +11,8 @@ import { PostsComponent } from './posts/posts.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PostsListComponent } from './posts-list/posts-list.component';
+import { PostComponent } from './post/post.component';
 
 describe('AppComponent', () => {
   let router: Router;
@@ -49,16 +51,16 @@ describe('AppComponent', () => {
     expect(location.path()).toBe('/posts');
   });
 
-  it('navigate to "/post/any-id" should take you to /post/any-id', async () => {
-    await router.navigateByUrl('post/any-id');
+  it('navigate to "/posts/any-id" should take you to /posts/any-id', async () => {
+    await router.navigateByUrl('posts/any-id');
 
-    expect(location.path()).toBe('/post/any-id');
+    expect(location.path()).toBe('/posts/any-id');
   });
 
-  it('navigate to "/post/some-another-id" should take you to /post/some-another-id', async () => {
-    await router.navigateByUrl('post/some-another-id');
+  it('navigate to "/posts/some-another-id" should take you to /posts/some-another-id', async () => {
+    await router.navigateByUrl('posts/some-another-id');
 
-    expect(location.path()).toBe('/post/some-another-id');
+    expect(location.path()).toBe('/posts/some-another-id');
   });
 
   it('navigate to "/contact-us" should take you to /contact-us', async () => {
@@ -122,5 +124,29 @@ describe('AppComponent', () => {
 
     expect(route).toBeTruthy();
     expect(route?.component).toBe(NotFoundComponent);
+  });
+
+  it('posts route ought to have two children', async () => {
+    const route: Route | undefined = routes.find((r: Route) => r.path === 'posts');
+
+    expect(route).toBeTruthy();
+    expect(route?.children).toBeTruthy();
+    expect(route?.children?.length).toBe(2);
+  });
+
+  it('posts child has to render routes list', async () => {
+    const route: Route | undefined = routes.find((r: Route) => r.path === 'posts');
+    const postsList: Route | undefined = route?.children?.find((r: Route) => !r.path);
+
+    expect(postsList).toBeTruthy();
+    expect(postsList?.component).toBe(PostsListComponent);
+  });
+
+  it('posts child has to render post', async () => {
+    const route: Route | undefined = routes.find((r: Route) => r.path === 'posts');
+    const post: Route | undefined = route?.children?.find((r: Route) => r.path === ':postId');
+
+    expect(post).toBeTruthy();
+    expect(post?.component).toBe(PostComponent);
   });
 });
