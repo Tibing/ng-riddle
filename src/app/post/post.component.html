@@ -3,7 +3,7 @@
   <p>{{ post.content }}</p>
 
   <div class="nav">
-    <a mat-flat-button *ngIf="post.prev">Prev</a>
-    <a mat-flat-button *ngIf="post.next">Next</a>
+    <a mat-flat-button *ngIf="post.prev" [routerLink]="'../' + post.prev.id">Prev</a>
+    <a mat-flat-button *ngIf="post.next" [routerLink]="'../' + post.next.id">Next</a>
   </div>
 </ng-container>
