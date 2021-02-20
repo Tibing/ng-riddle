@@ -8,17 +8,24 @@ import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostResolver } from './post.resolver';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PostsListComponent } from './posts-list/posts-list.component';
 
 
 export const routes: Routes = [
   { path: 'ng-riddle', component: NgRiddleComponent },
-  { path: 'posts', component: PostsComponent },
   {
-    path: 'post/:postId',
-    component: PostComponent,
-    resolve: {
-      postContent: PostResolver
-    }
+    path: 'posts',
+    component: PostsComponent,
+    children: [
+      { path: '', component: PostsListComponent },
+      {
+        path: ':postId',
+        component: PostComponent,
+        resolve: {
+          postContent: PostResolver
+        }
+      },
+    ],
   },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'about', component: AboutComponent },
