@@ -43,6 +43,11 @@ npm start
 - [4. Create posts list](#4-create-posts-list)
 - [5. Fetch post's content](#5-fetch-posts-content)
 - [6. Lazy-load dashboard](#6-lazy-load-dashboard)
+- [7. Setup root redirect](#7-setup-root-redirect)
+- [8. 404 page](#8-404-page)
+- [9. Nested routes](#9-nested-routes)
+- [10. Observe activated route](#10-observe-activated-route)
+- [11. Relative links](#11-relative-links)
 
 ### 1. Setup routing
 
@@ -186,3 +191,108 @@ To solve the problem you have to make it load lazily.
 #### Useful links
 
 - https://angular.io/guide/lazy-loading-ngmodules
+
+### 7. Setup root redirect
+
+#### What you have to do
+
+Go to the task branch
+
+```shell
+git checkout 7-setup-root-redirect
+```
+
+Now, when you open an app at http://localhost:4200 it'll take you to the empty screen:
+
+![](readme-assets/task-7/incorrect.png)
+
+It doesn't look like an expected behavior. That's why you ought to reconfigure the router and force it to redirect empty path to **/ng-riddle** like at the picture below.
+
+![](readme-assets/task-7/correct.png)
+
+#### Useful links
+
+- https://angular.io/guide/router#setting-up-redirects
+
+### 8. 404 page
+
+#### What you have to do
+
+Go to the task branch
+
+```shell
+git checkout 8-404-page
+```
+
+If you go to the any random uri at the website you'll get an error at the console and an empty page :(
+
+![](readme-assets/task-8/before.png)
+
+We definitely need to fix that! So, you have to reconfigure the router and force it to display a 404 page for any route we don't have. You ought to get the following result:
+
+![](readme-assets/task-8/after.png)
+
+#### Useful links
+
+- https://angular.io/guide/router#displaying-a-404-page
+
+### 9. Nested routes
+
+#### What you have to do
+
+Go to the task branch
+
+```shell
+git checkout 9-nested-routes
+```
+
+At this stage, we're not doing any visual changes. Here you have to refactor the way how our posts routes structured. You need to make them nested.
+
+So, you have to make the posts list load under **/posts**.
+And each post has to be rendered under **/posts/1-post**, **/posts/2-post** and so on.
+
+This and the following steps are preparation for the 11 task. We'll make links to the next and previous posts there.
+
+#### Useful links
+
+- https://angular.io/guide/router#nesting-routes
+
+### 10. Observe activated route
+
+#### What you have to do
+
+Go to the task branch
+
+```shell
+git checkout 10-observe-activated-route
+```
+
+At this task you have to do one more refactoring. At the next stage, you'll have to implement links to the next and previous posts. These links will have to take the user from the **post** page to the **post** page. So, the page will stay the same, while the content will have to change.
+
+It can be done easily with Angular router. However, you have to refactor the way you retrieve **data** from the activated route. For new, you're using an `activatedRoute.snapshot.data`. While Angular Router has an ability to subscribe to the **data** stream and render it on the screen.
+
+Now you have to refactor the post component and make it subscribe to the data stream.
+
+#### Useful links
+
+- https://angular.io/guide/router#activated-route
+
+### 11. Relative links
+
+#### What you have to do
+
+Go to the task branch
+
+```shell
+git checkout 11-relative-router-link
+```
+
+Here you have to implement next and previous links for each post:
+
+![](readme-assets/task-11/after.png)
+
+I've already crafted UI for you. You only have to implement navigation here.
+
+#### Useful links
+
+- https://angular.io/guide/router#using-relative-paths
