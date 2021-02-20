@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { PostContent } from '../post.service';
 
@@ -11,7 +13,10 @@ import { PostContent } from '../post.service';
 })
 export class PostComponent implements OnInit {
 
-  post: PostContent = this.activatedRoute.snapshot.data.postContent;
+  post$: Observable<PostContent> = this.activatedRoute.data
+    .pipe(
+      map(data => data.postContent),
+    );
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
