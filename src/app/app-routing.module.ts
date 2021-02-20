@@ -7,6 +7,7 @@ import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
 import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostResolver } from './post.resolver';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 export const routes: Routes = [
@@ -22,7 +23,6 @@ export const routes: Routes = [
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: '**', redirectTo: 'ng-riddle', pathMatch: 'full' },
 ];
 
 @NgModule({
