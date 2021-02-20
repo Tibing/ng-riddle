@@ -7,6 +7,7 @@ import { NgRiddleComponent } from './ng-riddle/ng-riddle.component';
 import { PostComponent } from './post/post.component';
 import { PostsComponent } from './posts/posts.component';
 import { PostResolver } from './post.resolver';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 export const routes: Routes = [
@@ -27,6 +28,7 @@ export const routes: Routes = [
       .then(({ DashboardModule }) => DashboardModule),
   },
   { path: '', redirectTo: 'ng-riddle', pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
