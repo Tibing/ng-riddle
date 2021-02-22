@@ -1,8 +1,11 @@
 # Ng Riddle
 
-This repository contains *Angular Routing Riddle*.
-It consists of 6 tasks for now.
-At this riddle you'll have to configure routing for a simple website.
+Hi there! My name is Nik and I have a problem.
+
+I'm an owner of a small beer factory in US Utah. I've ordered a website from ***** inc for my factory. They've created everything but routing. I've been upset and sued them. I won the trial, they got my money back partially, however, I still need to complete my website.
+That's why I'm asking you to help me and complete the routing configuration for my website.
+
+I've prepared a work plan for you. It consists of 11 tasks for now.
 
 > All the tasks has to be implemented with features from the **@angular/router** module.
 > Please, don't try to do features via plain JavaScript hacks.
@@ -25,13 +28,11 @@ npm install
 npm start
 ```
 
-## How to solve the riddle
+## Workflow
 
-### Workflow
-
-1. Checkout to the task's branch.
+1. Checkout to the task's branch and pick up a task
 2. Do what it asks you to do.
-3. Run tests with `npm test`.
+3. Send feature to the testing team using `npm test`.
 4. If tests fail, go to point 2.
 5. If all tests pass you can go to my solution, as **{task branch name}_done**.
 6. Go to the next task.
